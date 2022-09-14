@@ -58,17 +58,11 @@ export const FancyButton = forwardRef<Ref, Props>((props, ref) => (
 ```typescript 
 // eslint-disable-next-line react/no-typos
 import 'react';
-
 declare module 'react' {
-
-	interface StyleHTMLAttributes<T> extends React.HTMLAttributes<T> {
-	
-		jsx?: boolean;
-		
-		global?: boolean;
-	
-	}
-
+  interface StyleHTMLAttributes<T> extends React.HTMLAttributes<T> {
+	jsx?: boolean;
+	global?: boolean;
+  }
 }
 ```
 
