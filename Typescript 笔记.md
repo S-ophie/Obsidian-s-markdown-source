@@ -1,4 +1,4 @@
-#### `type`
+#### `type` 
 类型别名
 
 #### `interface`
