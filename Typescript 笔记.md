@@ -66,7 +66,12 @@ declare module 'react' {
 }
 ```
 
-
+#### 字符串字面量
+#### 模版字符串
+#### in
+--- keyof
+#### partial
+--- pick
 
 ---
 
