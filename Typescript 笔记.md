@@ -1,5 +1,10 @@
-#### type
+### 0831&0907
 
+---
+
+
+
+#### type
 
 类型别名
 接口：`?` 可选、`readonly`只读属性
@@ -97,83 +102,78 @@ declare module 'react' {
 
 
 ---
-0921
+
+
+### 0921
+
+---
+
+
 
 ```ts
-interface ITotal {
-
-	photo_num_max?: number; // 自定义字段，当前最大 photo_num
-	
-	// 以下为接口字段
-	
-	name: string;
-	
-	photo_num: number;
-	
-	inner_color_bfb: string;
-	
-	out_color_bfb: string;
-	
-	spec_photo_bfb: string;
-
-}
 
 // 字面量类型
+// type CompareType = 'photo_num'| 'spec_photo_bfb'| 'out_color_bfb'| 'inner_color_bfb'; 
 
-// type CompareType = 'photo_num'| 'spec_photo_bfb'| 'out_color_bfb'| 'inner_color_bfb';
+type IncludeNullUndefined = string | number | null | undefined;
 
-  
+// Exclude
+type NoNull = Exclude<IncludeNullUndefined, null>;
+// NonNullable
+type NoNullNoUndefined = NonNullable<IncludeNullUndefined>;
+
+// Extract
 type CompareType = Extract<
-
-	keyof ITotal,
-
-	'photo_num' | 'spec_photo_bfb' | 'out_color_bfb' | 'inner_color_bfb'
-
+  keyof ITotal,
+  'photo_num' | 'spec_photo_bfb' | 'out_color_bfb' | 'inner_color_bfb'
 >;
+
+// Pick
+type SubTotal = Pick<
+  ITotal,
+  'photo_num' | 'spec_photo_bfb' | 'out_color_bfb' | 'inner_color_bfb'
+>;
+
+type OtherSubTotal = Omit<
+  ITotal,
+  'photo_num' | 'spec_photo_bfb' | 'out_color_bfb' | 'inner_color_bfb'
+>;
+
+// keyof
+type SecondCompareType = keyof SubTotal;
 
 type DetailType = `${CompareType}_max_name`;
 
-  
-
-/**
-
-* 四种维度的胜出名单对象
-
-*/
-
-
 // type WinnerName = {
-
-	// photo_num_max_name: string;
-
-	// out_color_bfb_max_name: string;
-
-	// inner_color_bfb_max_name: string;
-
-	// spec_photo_bfb_max_name: string;
-
+// photo_num_max_name: string;
+// out_color_bfb_max_name: string;
+// inner_color_bfb_max_name: string;
+// spec_photo_bfb_max_name: string;
 // };
 
-  
+// in 类型守卫
 
 // type WinnerName = {
-
-	// [key in DetailType]: string;
-
+//   [key in DetailType]: string;
 // };
 
+// Record
 type WinnerName = Record<DetailType, string>;
 
-  
 
-type OptionWinner = Partial<WinnerName>
+// Partial
+type OptionWinner = Partial<WinnerName>;
+
+// Required
+type RequiredWinner = Required<OptionWinner>
+
 ```
 
 #### 字面量类型
 
 ```ts
 
-type CompareType =| 'photo_num'| 'spec_photo_bfb'| 'out_color_bfb'| 'inner_color_bfb';
+type CompareType = 'photo_num'| 'spec_photo_bfb'| 'out_color_bfb'| 'inner_color_bfb';
 
 ```
 
@@ -185,7 +185,7 @@ type DetailType = `${CompareType}_max_name`;
 
 ```
 
-  
+
 #### in
 
 ```ts
@@ -207,6 +207,15 @@ type OptionWinner = Partial<WinnerName>
 
 ```
 
+---
+
+
+
+### 0927
+
+---
+
+
 
 #### Record
 
@@ -214,10 +223,12 @@ type OptionWinner = Partial<WinnerName>
 
 type WinnerName = Record<DetailType, string>;
 
-```
 
----
-0927
+// 空对象
+
+type NullObject = Record<string, never>
+
+```
 
 #### keyof
 
@@ -251,9 +262,48 @@ type CompareType = Extract<
 ```
 
 
+![[Excalidraw/Drawing 2022-09-22 12.40.51.excalidraw]]
 
+#### Pick
 
-参考：
-- https://ts.xcatliu.com/
-- https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/forward_and_create_ref/
+```ts
+type SubTotal = Pick<
+  ITotal,
+  'photo_num' | 'spec_photo_bfb' | 'out_color_bfb' | 'inner_color_bfb'
+>;
+```
 
+#### Exclude
+
+```ts
+type IncludeNullUndefined = string | number | null | undefined;
+
+// Exclude
+type NoNull = Exclude<IncludeNullUndefined, null>;
+```
+
+#### NonNullable
+
+```ts
+// NonNullable
+type NoNullNoUndefined = NonNullable<IncludeNullUndefined>;
+```
+
+#### Omit
+
+```ts
+type OtherSubTotal = Omit<
+  ITotal,
+  'photo_num' | 'spec_photo_bfb' | 'out_color_bfb' | 'inner_color_bfb'
+>;
+```
+
+#### Required
+
+```ts
+type RequiredWinner = Required<OptionWinner>
+```
+
+**除了内置的泛型工具还有社区的，and you can try write it yourself (泛型函数)**
+
+https://github.com/sindresorhus/type-fest
