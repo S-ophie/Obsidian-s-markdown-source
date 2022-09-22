@@ -89,19 +89,19 @@ declare module 'react' {
 ```ts
 interface ITotal {
 
-photo_num_max?: number; // 自定义字段，当前最大 photo_num
-
-// 以下为接口字段
-
-name: string;
-
-photo_num: number;
-
-inner_color_bfb: string;
-
-out_color_bfb: string;
-
-spec_photo_bfb: string;
+	photo_num_max?: number; // 自定义字段，当前最大 photo_num
+	
+	// 以下为接口字段
+	
+	name: string;
+	
+	photo_num: number;
+	
+	inner_color_bfb: string;
+	
+	out_color_bfb: string;
+	
+	spec_photo_bfb: string;
 
 }
 
@@ -112,9 +112,9 @@ spec_photo_bfb: string;
   
 type CompareType = Extract<
 
-keyof ITotal,
+	keyof ITotal,
 
-'photo_num' | 'spec_photo_bfb' | 'out_color_bfb' | 'inner_color_bfb'
+	'photo_num' | 'spec_photo_bfb' | 'out_color_bfb' | 'inner_color_bfb'
 
 >;
 
@@ -131,13 +131,13 @@ type DetailType = `${CompareType}_max_name`;
 
 // type WinnerName = {
 
-// photo_num_max_name: string;
+	// photo_num_max_name: string;
 
-// out_color_bfb_max_name: string;
+	// out_color_bfb_max_name: string;
 
-// inner_color_bfb_max_name: string;
+	// inner_color_bfb_max_name: string;
 
-// spec_photo_bfb_max_name: string;
+	// spec_photo_bfb_max_name: string;
 
 // };
 
@@ -145,7 +145,7 @@ type DetailType = `${CompareType}_max_name`;
 
 // type WinnerName = {
 
-// [key in DetailType]: string;
+	// [key in DetailType]: string;
 
 // };
 
@@ -179,7 +179,7 @@ type DetailType = `${CompareType}_max_name`;
 
 type WinnerName = {
 
-[key in DetailType]: string;
+	[key in DetailType]: string;
 
 };
 
@@ -213,9 +213,9 @@ type WinnerName = Record<DetailType, string>;
 
 type CompareType = Extract<
 
-keyof ITotal,
+	keyof ITotal,
 
-'photo_num' | 'spec_photo_bfb' | 'out_color_bfb' | 'inner_color_bfb'
+	'photo_num' | 'spec_photo_bfb' | 'out_color_bfb' | 'inner_color_bfb'
 
 >;
 
@@ -229,10 +229,10 @@ keyof ITotal,
 
 type CompareType = Extract<
 
-keyof ITotal,
+	keyof ITotal,
 
-'photo_num' | 'spec_photo_bfb' | 'out_color_bfb' | 'inner_color_bfb'
-
+	'photo_num' | 'spec_photo_bfb' | 'out_color_bfb' | 'inner_color_bfb'
+	
 >;
 
 ```
